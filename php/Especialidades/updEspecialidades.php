@@ -1,4 +1,4 @@
-<?php
+<?php asdfasdfasdfas
 	//aqui la variable de sesion valida la autenticacion al programa, queda pendiente
 
 //conexion al servidor de Base de Datos
