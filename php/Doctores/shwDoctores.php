@@ -30,7 +30,7 @@ if (mysqli_num_rows($tablaBD)>0){
 	<head>
 		<script type = 'text/javascript'>
 		funcion enviar(){
-			window.location = 'updEspecialidades.php?id=noId';
+			window.location = 'updDoctores.php?id=noId';
 		}
 		</script>
 	</head>
@@ -66,7 +66,7 @@ if (mysqli_num_rows($tablaBD)>0){
 			$materno = $registro['materno'];
 			echo "<tr>";
 			echo "<script type = 'text/javascript'> document.getElementByld('hdnld').value = $id_medico; </script>";
-			echo "<td><a href = 'updEspecialidades.php?id=$id_medico'>" .$id_medico. "</a></td>";
+			echo "<td><a href = 'updDoctores.php?id=$id_medico'>" .$id_medico. "</a></td>";
 			echo "<td>" .$id_colonia. "</td>";
 			echo "<td>" .$nombre. "</td>";
 			echo "<td>" .$paterno. "</td>";

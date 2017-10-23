@@ -22,44 +22,49 @@ switch ($opcion)
   //opcion grabar
   case('agregar'):
     //construir el query para insertar en la tabla de la bd
-    $clave = $_POST['txtClave'];
-    $nombre = $_POST['txtNombre'];
-    $qry = "INSERT INTO Especialidad (clave, nombre) VALUES ('$clave', '$nombre')";
+		$id_medico = $registro['id_medico'];
+		$id_colonia = $registro['id_colonia'];
+		$nombre = $registro['nombre'];
+		$paterno = $registro['paterno'];
+		$materno = $registro['materno'];
+    $qry = "INSERT INTO medicos (id_colonia, nombre, paterno, materno) VALUES ('$id_colonia', '$nombre', '$paterno', '$materno')";
     //ejecutar el query
     $resultado = mysqli_query($conexionBD, $qry) or die ("Error al inertar el registro: " .mysqli_error($conexionBD));
     //redirigir el programa al script html de captura de datos
     echo "<script type='text/javascript'>
-		 window.location='updEspecialidades.php?id=noId'
+		 window.location='updDoctores.php?id=noId'
 		 </script>";
     	break;
 
   //grabar modificar
   case('modificar'):
     //construir el query para modificar en la tabla de la bd
-    $id = $_POST['hdnId'];
-    $clave = $_POST['txtClave'];
-    $nombre = $_POST['txtNombre'];
-    $qry = "UPDATE Especialidad SET clave='$clave', nombre='$nombre' WHERE id='$id'";
+		$id_medico = $registro['id_medico'];
+		$id_colonia = $registro['id_colonia'];
+		$nombre = $registro['nombre'];
+		$paterno = $registro['paterno'];
+		$materno = $registro['materno'];
+    $qry = "UPDATE medicos SET id_colonia='$id_colonia', nombre='$nombre', paterno='$paterno', materno='$materno' WHERE id_medico='$id_medico'";
     //ejecutar el query
     $resultado = mysqli_query($conexionBD, $qry) or die("Error al modificar el registro: " .mysqli_error($conexionBD));
 
     //redirigir el programa al script html de captura de datos
     echo "
-      <script type/javascript>window.location='shwEspecialidades.php'</script> ";
+      <script type/javascript>window.location='shwDoctores.php'</script> ";
       break;
 
     //opcion de eliminar
     case('eliminar'):
       //construir el query para eliminar en la tabla de la bd
-      $id = $_POST['hdnId'];
-      $qry = "DELETE FROM Especialidad WHERE id=$id";
+      $id_medico = $_POST['hdnId'];
+      $qry = "DELETE FROM medicos WHERE id_medico=$id_medico";
       //ejecutar el query
       $resultado = mysqli_query($conexionBD, $qry) or die ("Error al eliminar el registro: " .mysqli_error($conexionBD));
 
       //redirigir el programa al script html de captura de datos
       echo "
         <script type='text/javascript'>
-				 window.location='shwEspecialidades.php'
+				 window.location='shwDoctores.php'
 				 </script>";
          break;
 

@@ -1,4 +1,4 @@
-<?php asdfasdfasdfas
+<?php
 	//aqui la variable de sesion valida la autenticacion al programa, queda pendiente
 
 //conexion al servidor de Base de Datos
@@ -28,21 +28,21 @@ if(isset($_GET['id_medico'])){
 						{
 							case 'agregar':
 								document.getElementById('hdnOpc').value = 'agregar';
-								document.getElementById('frmUpdEspecialidades').submit();
+								document.getElementById('frmUpdDoctores').submit();
 								break;
 							case 'regresar':
-								window.location = 'shwEspecialidades.php'
+								window.location = 'shwDoctores.php'
 								break;
 						}
 					}
 				</script>
 			</head>
 			<body onLoad='javascript: document.getElementById(\"txtId\").focus()'>
-			<form name='frmUpdEspecialidades' id='frmUpdEspecialidades' action='qryEspecialidades.php' method='POST'>
+			<form name='frmUpdDoctores' id='frmUpdDoctores' action='qryDoctores.php' method='POST'>
 				<table align='center' width='430' border='1'>
 					<tr height='100'>
 						<td colspan='2' align='center'>
-							<b>Agregando Especialidades</b>
+							<b>Agregando Doctores</b>
 							<input type='hidden' id='hdnOpc' name='hdnOpc'>
 						</td>
 					</tr>
@@ -105,24 +105,24 @@ if(isset($_GET['id_medico'])){
 							case 'modificar':
 								document.getElementById('hdnOpc').value = 'modificar';
 								document.getElementById('hdnId').value = '$id_medico';
-								document.getElementById('frmUpdEspecialidades').submit();
+								document.getElementById('frmUpdDoctores').submit();
 								break;
 
 							case 'eliminar':
 								document.getElementById('hdnOpc').value = 'eliminar';
 								document.getElementById('hdnId').value = '$id_medico';
-								document.getElementById(frmUpdEspecialidades).submit();
+								document.getElementById(frmUpdDoctores).submit();
 								break;
 
 							case 'regresar':
-								window.location = 'shwEspecialidades.php'
+								window.location = 'shwDoctores.php'
 								break;
 						}
 					}
 				</script>
 			</head>
 			<body onLoad='javascript:document.getElementById(\"txtNombre\").focus()'>
-				<form name='frmUpdEspecialidades' id='frmUpdEspecialidades' action='qryEspecialidades.php' method='POST'>
+				<form name='frmUpdDoctores' id='frmUpdDoctores' action='qryDoctores.php' method='POST'>
 					<table align='center' width='430'>
 						<tr height='100'>
 							<td colspan='2' align='center'>
@@ -132,11 +132,11 @@ if(isset($_GET['id_medico'])){
 							</td>
 						</tr>
 						<tr>
-							<td>Id_medico</td>
+							<td>id_Medico</td>
 							<td>$id_medico</td>
 						</tr>
 						<tr>
-							<td>ID_Colonia</td>
+							<td>id_Colonia</td>
 							<td><input type='text' id='txtClave' name='txtClave' value='$id_colonia'>
 							</td>
 						</tr>

@@ -13,7 +13,7 @@
 		function opcion(opc){
 			switch (opc){
 				case 'Doctores':
-					top.frames['2'].location.href="/Medico/php/Especialidades/shwEspecialidades.php";
+					top.frames['2'].location.href="/Medico/php/Doctores/shwDoctores.php";
 					break;
 					case 'Pacientes':
 					top.frames['2'].location.href="materias/shwMaterias.php";
