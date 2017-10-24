@@ -29,7 +29,7 @@ if (mysqli_num_rows($tablaBD)>0){
 	<title></title>
 	<head>
 		<script type = 'text/javascript'>
-		funcion enviar(){
+		function enviar(){
 			window.location = 'updDoctores.php?id=noId';
 		}
 		</script>
