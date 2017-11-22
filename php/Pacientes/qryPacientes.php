@@ -22,22 +22,26 @@ switch ($opcion)
   //opcion grabar
   case('agregar'):
     //construir el query para insertar en la tabla de la bd
-		$id_medico = $_POST['txtIdDoc'];
-		$nombre = $_POST['txtNomDoc'];
-		$paterno = $_POST['txtPatDoc'];
-		$materno = $_POST['txtMatDoc'];
-		$telefono = $_POST['txtTelDoc'];
-		$id_pais = $_POST['txtIdPais'];
-		$id_estado = $_POST['txtIdEdo'];
-		$id_ciudad = $_POST['txtIdCd'];
-		$id_colonia = $_POST['txtIdCol'];
 
-    $qry = "INSERT INTO medicos (id_medico, nombre, paterno, materno, telefono, id_pais, id_estado, id_ciudad, id_colonia) VALUES ('$id_medico', '$nombre', '$paterno', '$materno', '$telefono', '$id_pais', '$id_estado', '$id_ciudad', '$id_colonia')";
+
+		$nombre = $_POST['txtNomPac'];
+		$paterno = $_POST['txtPatPac'];
+		$materno = $_POST['txtMatPac'];
+		$telefono = $_POST['txtTelPac'];
+    $id_medico = $_POST['txtIdmed'];
+		$id_pais = $_POST['txtIdPa'];
+		$id_estado = $_POST['txtIdEst'];
+		$id_ciudad = $_POST['txtIdc'];
+		$id_colonia = $_POST['txtPacCol'];
+    $sexo = $_POST['txtSex'];
+
+
+    $qry = "INSERT INTO pacientes(nombre, paterno, materno, telefono, id_medico, id_pais, id_estado, id_ciudad, id_colonia, sexo) VALUES ('$nombre', '$paterno', '$materno', '$telefono', '$id_medico', '$id_pais', '$id_estado', '$id_ciudad', '$id_colonia', '$sexo')";
     //ejecutar el query
     $resultado = mysqli_query($conexionBD, $qry) or die ("Error al insertar el registro: " .mysqli_error($conexionBD));
     //redirigir el programa al script html de captura de datos
     echo "<script type='text/javascript'>
-		 window.location='updDoctores.php?id_medico=noId'
+		 window.location='updPacientes.php?id_paciente=noId'
 		 </script>";
     	break;
 

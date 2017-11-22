@@ -9,9 +9,8 @@ if (mysqli_connect_errno()) {
 }
 	//identificar la accion del usuario para conocer que tipo de query usar en la actializacion de la bd
 
-if(isset($_GET['id_medico'])){
-  $accion = $_GET['id_medico'];
-
+if(isset($_GET['id_paciente'])){
+  $accion = $_GET['id_paciente'];
 }
 
 
@@ -29,59 +28,63 @@ if(isset($_GET['id_medico'])){
 						{
 							case 'agregar':
 								document.getElementById('hdnOpc').value = 'agregar';
-								document.getElementById('frmUpdDoctores').submit();
+								document.getElementById('frmUpdPacientes').submit();
 								break;
 							case 'regresar':
-								window.location = 'shwDoctores.php'
+								window.location = 'shwPacientes.php'
 								break;
 						}
 					}
 				</script>
 			</head>
-			<body onLoad='javascript: document.getElementById(\"txtIdDoc\").focus()'> 
-			<form name='frmUpdDoctores' id='frmUpdDoctores' action='qryDoctores.php' method='POST'>
+			<body onLoad='javascript: document.getElementById(\"txtId\").focus()'>
+			<form name='frmUpdPacientes' id='frmUpdPacientes' action='qryPacientes.php' method='POST'>
 				<table align='center' width='430' border='1'>
 					<tr height='100'>
 						<td colspan='2' align='center'>
-							<b>Agregando Doctores</b>
+							<b>Agregando Pacientes</b>
 							<input type='hidden' id='hdnOpc' name='hdnOpc'>
 						</td>
 					</tr>
-          <tr>
-						<td>ID</td>
-						<td><input type='text' id='txtIdDoc' name='txtIdDoc' method='POST'></td>
-					</tr>
 					<tr>
 						<td>Nombre</td>
-						<td><input type='text' id='txtNomDoc' name='txtNomDoc' method='POST'></td>
+						<td><input type='text' id='txtNomPac' name='txtNomPac'></td>
 					</tr>
 					<tr>
 						<td>Paterno</td>
-						<td><input type='text' id='txtPatDoc' name='txtPatDoc' method='POST'></td>
+						<td><input type='text' id='txtPatPac' name='txtPatPac'></td>
 					</tr>
           <tr>
-						<td>Materno</td>
-						<td><input type='text' id='txtMatDoc' name='txtMatDoc' method='POST'></td>
-					</tr>
+            <td>Materno</td>
+            <td><input type='text' id='txtMatPac' name='txtMatPac'></td>
+          </tr>
           <tr>
-						<td>Telefono</td>
-						<td><input type='text' id='txtTelDoc' name='txtTelDoc' method='POST'></td>
-					</tr>
+            <td>Telefono</td>
+            <td><input type='text' id='txtTelPac' name='txtTelPac'></td>
+          </tr>
           <tr>
-						<td>ID Pais</td>
-						<td><input type='text' id='txtIdPais' name='txtIdPais' method='POST'></td>
-					</tr>
+            <td>ID Medico</td>
+            <td><input type='text' id='txtIdmed' name='txtIdmed'></td>
+          </tr>
+          <tr>
+            <td>ID Pais</td>
+            <td><input type='text' id='txtIdPa' name='txtIdPa'></td>
+          </tr>
           <tr>
             <td>ID Estado</td>
-            <td><input type='text' id='txtIdEdo' name='txtIdEdo' method='POST'></td>
+            <td><input type='text' id='txtIdEst' name='txtIdEst'></td>
           </tr>
           <tr>
             <td>ID Ciudad</td>
-            <td><input type='text' id='txtIdCd' name='txtIdCd' method='POST'></td>
+            <td><input type='text' id='txtIdc' name='txtIdc'></td>
           </tr>
           <tr>
             <td>ID Colonia</td>
-            <td><input type='text' id='txtIdCol' name='txtIdCol' method='POST'></td>
+            <td><input type='text' id='txtPacCol' name='txtPacCol'></td>
+          </tr>
+          <tr>
+            <td>Sexo</td>
+            <td><input type='text' id='txtSex' name='txtSex'></td>
           </tr>
 					<tr>
 						<td colspan='2' align='center'>
@@ -102,17 +105,17 @@ if(isset($_GET['id_medico'])){
 	{
 		//construir el formulario para la opcion de modificar el registro
 		//obtener el id para recuperar el registro correspondiente
-		$id_medico = $_GET['id_medico'];
+		$id_medico = $_GET['id_paciente'];
 
 		//obtener la recoleccion de registros que corresponde al id enviado
-		$query = "SELECT * FROM medicos WHERE id_medico='$id_medico'";
+		$query = "SELECT * FROM pacientes WHERE id_paciente='$id_paciente'";
 
 		//ejecutar a consulta
 		$tablaBD = mysqli_query($connect, $query);
 
 		//sacar los datos de la tabla de registros intermedios
 		$registro = mysqli_fetch_array($tablaBD, MYSQLI_NUM);
-  //  $id_medico = $registro['id_medico'];
+	  $id_paciente = $registro['id_paciente'];
     $id_colonia = $registro['id_colonia'];
 		$nombre = $registro['nombre'];
   	$paterno = $registro['paterno'];
@@ -129,14 +132,14 @@ if(isset($_GET['id_medico'])){
 						switch (opc) {
 							case 'modificar':
 								document.getElementById('hdnOpc').value = 'modificar';
-								document.getElementById('hdnId').value = '$id_medico';
+								document.getElementById('hdnId').value = '$id_paciente';
 								document.getElementById('frmUpdDoctores').submit();
 								break;
 
 							case 'eliminar':
 								document.getElementById('hdnOpc').value = 'eliminar';
-								document.getElementById('hdnId').value = '$id_medico';
-								document.getElementById('frmUpdDoctores').submit();
+								document.getElementById('hdnId').value = '$id_paciente';
+								document.getElementById(frmUpdDoctores).submit();
 								break;
 
 							case 'regresar':
@@ -157,12 +160,12 @@ if(isset($_GET['id_medico'])){
 							</td>
 						</tr>
 						<tr>
-							<td>id_Medico</td>
-							<td>$id_medico</td>
+							<td>id_paciente</td>
+							<td>$id_paciente</td>
 						</tr>
 						<tr>
 							<td>id_Colonia</td>
-							<td><input type='text' id='txtColo' name='txtColo' value='$id_colonia'>
+							<td><input type='text' id='txtClave' name='txtClave' value='$id_colonia'>
 							</td>
 						</tr>
 						<tr>
@@ -172,12 +175,12 @@ if(isset($_GET['id_medico'])){
 						</tr>
             <tr>
 							<td>Paterno</td>
-							<td><input type='text' id='txtPat' name='txtPat' value='$paterno'>
+							<td><input type='text' id='txtClave' name='txtClave' value='$paterno'>
 							</td>
 						</tr>
             <tr>
 							<td>Materno</td>
-							<td><input type='text' id='txtMat' name='txtMat' value='$materno'>
+							<td><input type='text' id='txtClave' name='txtClave' value='$materno'>
 							</td>
 						</tr>
 						<tr>

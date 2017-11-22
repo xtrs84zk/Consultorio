@@ -16,13 +16,13 @@
 					top.frames['2'].location.href="/Medico/php/Doctores/shwDoctores.php";
 					break;
 					case 'Pacientes':
-					top.frames['2'].location.href="materias/shwMaterias.php";
+					top.frames['2'].location.href="/Medico/php/Pacientes/shwPacientes.php";
 					break;
 					case 'Citas':
-					top.frames['2'].location.href="alumnos.html";
+					top.frames['2'].location.href="/Medico/php/Citas/shwCitas.php";
 					break;
-					case 'Expedientes':
-					top.frames['2'].location.href="calificaciones.html";
+					case 'Directorio':
+					top.frames['2'].location.href="/Medico/php/Directorio/shwDirectorio.php";
 					break;
 					case 'Terminar':
 					window.top.location.href="/Medico/index.html";
@@ -36,18 +36,43 @@
 			width: 150px;
 			height: 40px;
 			}
+
 	</style>
 </head>
 <body background="/Medico/img/fondomed2.jpg" height="50px">
 	<table align="center">
 		<tr>
 			<td>
-				<input type="button" value="Doctores" class="tamanoBoton" onclick="opcion('Doctores');">
+				<div align="center">
+			<h4>Doctores</h4>
+			 </div>
+			<hr width="90%" size="2px" color="black">
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<input type="button" value="Pacientes" class="tamanoBoton" onclick="opcion('Pacientes');">
+				<input type="button" value="Doctores" class="tamanoBoton" onclick="opcion('Doctores');">
+			</td>
+		</tr>
+		<tr>
+			<td>                         <br>
+				<div align="center">
+			<h4>Pacientes</h4>
+		   </div>
+			<hr width="90%" size="2px" color="black">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" value="Pacientes Genero" class="tamanoBoton" onclick="opcion('Pacientes');">
+			</td>
+		</tr>
+		<tr>
+			<td>   <br>
+				<div align="center">
+			<h4>Consultorio</h4>
+			 </div>
+			<hr width="90%" size="2px" color="black">
 			</td>
 		</tr>
 		<tr>
@@ -57,12 +82,12 @@
 		</tr>
 		<tr>
 			<td>
-				<input type="button" value="Expedientes" style="width: 150px; height:40px;" onclick="opcion('Expedientes');">
+				<input type="button" value="Directorio" style="width: 150px; height:40px;" onclick="opcion('Directorio');">
 			</td>
 		</tr>
 		<tr style="height: 200px">
 			<td>
-				<input type="button" value="Terminar" style="width: 150px; height:40px;" onclick="opcion('Terminar');">
+				<input type="button" value="Salir" style="width: 150px; height:40px;" onclick="opcion('Terminar');">
 			</td>
 		</tr>
 	</table>

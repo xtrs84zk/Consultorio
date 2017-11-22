@@ -15,7 +15,7 @@ $conexionBD = mysqli_connect('localhost', 'root', 'root', 'consultorio') or die
 //mysqli_select_db($conexionBD, 'kardex') or die ('No se puede abrir la estructura de BD' .mysql_error());
 
 //query para obtener conjunto de registro de la tabla de especialidades
-$qry = "SELECT * FROM medicos ORDER BY id_medico";
+$qry = "SELECT * FROM vista_citas";
 
 //ejecutar el query
 $tablaBD = mysqli_query($conexionBD, $qry);
@@ -28,29 +28,29 @@ if (mysqli_num_rows($tablaBD)>0){
 	<html>
 	<title></title>
 	<head>
-		<script type='text/javascript'>
+		<script type = 'text/javascript'>
 		function enviar(){
-			window.location = 'updDoctores.php?id_medico=noId';
+			window.location = 'updDoctores.php?id=noId';
 		}
 		</script>
 	</head>
 	<body>
-	<table align='center' width='430' border='1'>
+	<table align='center' width='700' border='1'>
 		<tr>
 			<td colspan='2' align='center'>
-				<input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' onClick='enviar()'>
+				<input type='button' id='btnAgregar' name='btnAgregar' value='Agregar' onclick='enviar()'>
 			</td>
 		</tr>
 	</table>
-	<table id = 'idTabla' border = '1' align = 'center' width = '430'>
+	<table id = 'idTabla' border = '1' align = 'center' width = '700'>
 		<tr><td>
 		<thead>
 			<tr style = 'background-color: #BAB7B7'>
-			<th width = '30' height = '20'> id_medico </th>
-			<th width = '50' height = '20'> id_colonia </th>
-			<th width = '400' height = '20'> Nombre </th>
-			<th width = '400' height = '20'> Paterno </th>
-			<th width = '400' height = '20'> Materno </th>
+			<th width = '30' height = '20'> ID </th>
+			<th width = '300' height = '20'> Medico asignado </th>
+			<th width = '400' height = '20'> Paciente </th>
+			<th width = '400' height = '20'> Fecha y Hora </th>
+			<th width = '150' height = '20'> ID Diagnositico </th>
 
 		</thead>
 		<!- ciclo para recorrer la tabla de registros intermedios que forma ->
@@ -59,18 +59,19 @@ if (mysqli_num_rows($tablaBD)>0){
 		";
 		//desplegar los registros de la tabla especialidades de la bd
 		while($registro = mysqli_fetch_array($tablaBD)){
-			$id_medico = $registro['id_medico'];
-			$id_colonia = $registro['id_colonia'];
-			$nombre = $registro['nombre'];
-			$paterno = $registro['paterno'];
-			$materno = $registro['materno'];
+			$id_cita = $registro['id_cita'];
+			$medico = $registro['nombre_doc'];
+			$paciente = $registro['nombre_pac'];
+			$fecha_cita = $registro['fecha_cita'];
+			$id_diag = $registro['id_diag'];
 			echo "<tr>";
-			echo "<script type = 'text/javascript'> document.getElementByld('hdnld').value = $id_medico; </script>";
-			echo "<td><a href = 'updDoctores.php?id_medico=$id_medico'>" .$id_medico. "</a></td>";
-			echo "<td>" .$id_colonia. "</td>";
-			echo "<td>" .$nombre. "</td>";
-			echo "<td>" .$paterno. "</td>";
-			echo "<td>" .$materno. "</td>";
+			echo "<script type = 'text/javascript'> document.getElementByld('hdnld').value = $id_cita; </script>";
+			echo "<td><a href = 'updDoctores.php?id=$id_cita'>" .$id_cita. "</a></td>";
+			echo "<td>" .$medico. "</td>";
+			echo "<td>" .$paciente. "</td>";
+			echo "<td>" .$fecha_cita. "</td>";
+      echo "<script type = 'text/javascript'> document.getElementByld('hdnlb').value = $id_diag; </script>";
+      echo "<td><a href = 'updDoctores.php?id=$id_diag'>" .$id_diag. "</a></td>";
 			echo "</tr>";
 		}
 		echo "<table>";
@@ -83,7 +84,7 @@ else{
 				<td></td>
 			</tr>
 		<tr align = 'center'>
-		<td width = '1000' align = 'center'><font color = '#ff3333'> No existe registros en la tabla de Medicos </font></td>
+		<td width = '1000' align = 'center'><font color = '#ff3333'> No existe registros en la tabla de Citas </font></td>
 		</tr>
 	</table> ";
 	echo " </body> ";
