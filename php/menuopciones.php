@@ -18,11 +18,17 @@
 					case 'Pacientes':
 					top.frames['2'].location.href="/Medico/php/Pacientes/shwPacientes.php";
 					break;
+					case 'Pacientesfecha':
+					top.frames['2'].location.href="/Medico/php/Pacientes/botonfechas.php";
+					break;
 					case 'Citas':
 					top.frames['2'].location.href="/Medico/php/Citas/shwCitas.php";
 					break;
 					case 'Directorio':
 					top.frames['2'].location.href="/Medico/php/Directorio/shwDirectorio.php";
+					break;
+					case 'PacientesList':
+					top.frames['2'].location.href="/Medico/php/ListaPacientes/shwLista.php";
 					break;
 					case 'Terminar':
 					window.top.location.href="/Medico/index.html";
@@ -64,7 +70,17 @@
 		</tr>
 		<tr>
 			<td>
-				<input type="button" value="Pacientes Genero" class="tamanoBoton" onclick="opcion('Pacientes');">
+				<input type="button" value="Lista General" class="tamanoBoton" onclick="opcion('PacientesList');">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" value="Genero" class="tamanoBoton" onclick="opcion('Pacientes');">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="button" value="Fecha de cita" class="tamanoBoton" onclick="opcion('Pacientesfecha');">
 			</td>
 		</tr>
 		<tr>

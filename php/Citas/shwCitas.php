@@ -30,7 +30,7 @@ if (mysqli_num_rows($tablaBD)>0){
 	<head>
 		<script type = 'text/javascript'>
 		function enviar(){
-			window.location = 'updDoctores.php?id=noId';
+			window.location = 'updCitas.php?id_cita=noId';
 		}
 		</script>
 	</head>
@@ -70,8 +70,8 @@ if (mysqli_num_rows($tablaBD)>0){
 			echo "<td>" .$medico. "</td>";
 			echo "<td>" .$paciente. "</td>";
 			echo "<td>" .$fecha_cita. "</td>";
-      echo "<script type = 'text/javascript'> document.getElementByld('hdnlb').value = $id_diag; </script>";
-      echo "<td><a href = 'updDoctores.php?id=$id_diag'>" .$id_diag. "</a></td>";
+			echo "<script type = 'text/javascript'> document.getElementByld('iddiag').value = $id_diag; </script>";
+      echo "<td><a href = 'shwReceta.php?id_diag=$id_diag'>" .$id_diag. "</a></td>";
 			echo "</tr>";
 		}
 		echo "<table>";

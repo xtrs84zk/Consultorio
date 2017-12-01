@@ -105,7 +105,7 @@ if(isset($_GET['id_paciente'])){
 	{
 		//construir el formulario para la opcion de modificar el registro
 		//obtener el id para recuperar el registro correspondiente
-		$id_medico = $_GET['id_paciente'];
+		$id_paciente = $_GET['id_paciente'];
 
 		//obtener la recoleccion de registros que corresponde al id enviado
 		$query = "SELECT * FROM pacientes WHERE id_paciente='$id_paciente'";
@@ -115,7 +115,7 @@ if(isset($_GET['id_paciente'])){
 
 		//sacar los datos de la tabla de registros intermedios
 		$registro = mysqli_fetch_array($tablaBD, MYSQLI_NUM);
-	  $id_paciente = $registro['id_paciente'];
+
     $id_colonia = $registro['id_colonia'];
 		$nombre = $registro['nombre'];
   	$paterno = $registro['paterno'];
@@ -130,31 +130,26 @@ if(isset($_GET['id_paciente'])){
 					function enviar(opc)
 					{
 						switch (opc) {
-							case 'modificar':
-								document.getElementById('hdnOpc').value = 'modificar';
-								document.getElementById('hdnId').value = '$id_paciente';
-								document.getElementById('frmUpdDoctores').submit();
-								break;
-
 							case 'eliminar':
 								document.getElementById('hdnOpc').value = 'eliminar';
 								document.getElementById('hdnId').value = '$id_paciente';
-								document.getElementById(frmUpdDoctores).submit();
+								document.getElementById(frmUpdPacientes).submit();
+
 								break;
 
 							case 'regresar':
-								window.location = 'shwDoctores.php'
+								window.location = 'shwPacientes.php'
 								break;
 						}
 					}
 				</script>
 			</head>
 			<body onLoad='javascript:document.getElementById(\"txtNombre\").focus()'>
-				<form name='frmUpdDoctores' id='frmUpdDoctores' action='qryDoctores.php' method='POST'>
+				<form name='frmUpdPacientes' id='frmUpdPacientes' action='qryPacientes.php' method='POST'>
 					<table align='center' width='430'>
 						<tr height='100'>
 							<td colspan='2' align='center'>
-								<b>Modificando Doctores</b>
+								<b>Modificando Pacientes</b>
 								<input type='hidden' id='hdnOpc' name='hdnOpc'>
 								<input type='hidden' id='hdnId' name='hdnId'>
 							</td>
@@ -162,31 +157,6 @@ if(isset($_GET['id_paciente'])){
 						<tr>
 							<td>id_paciente</td>
 							<td>$id_paciente</td>
-						</tr>
-						<tr>
-							<td>id_Colonia</td>
-							<td><input type='text' id='txtClave' name='txtClave' value='$id_colonia'>
-							</td>
-						</tr>
-						<tr>
-							<td>Nombre</td>
-							<td><input type='text' id='txtNombre' name='txtNombre' value='$nombre'>
-							</td>
-						</tr>
-            <tr>
-							<td>Paterno</td>
-							<td><input type='text' id='txtClave' name='txtClave' value='$paterno'>
-							</td>
-						</tr>
-            <tr>
-							<td>Materno</td>
-							<td><input type='text' id='txtClave' name='txtClave' value='$materno'>
-							</td>
-						</tr>
-						<tr>
-							<td colspan='2' align='center'>
-							<input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width:100px' onClick='enviar(\"modificar\")'>
-							</td>
 						</tr>
 						<tr>
 							<td colspan='2' align='center'>

@@ -15,7 +15,13 @@ $conexionBD = mysqli_connect('localhost', 'root', 'root', 'consultorio') or die
 //mysqli_select_db($conexionBD, 'kardex') or die ('No se puede abrir la estructura de BD' .mysql_error());
 
 //query para obtener conjunto de registro de la tabla de especialidades
-$qry = "SELECT * FROM porgenero";
+
+
+$fecha1 = $_POST['txtFecha1'];
+$fecha2 = $_POST['txtFecha2'];
+
+
+$qry = "SELECT * FROM porfecha WHERE fecha_consulta BETWEEN '$fecha1' AND '$fecha2'";
 
 //ejecutar el query
 $tablaBD = mysqli_query($conexionBD, $qry);
@@ -49,7 +55,6 @@ if (mysqli_num_rows($tablaBD)>0){
 			<th width = '400' height = '20'> Nombre paciente </th>
 			<th width = '300' height = '20'> Paterno </th>
 			<th width = '300' height = '20'> Materno </th>
-			<th width = '300' height = '20'> Sexo </th>
       <th width = '400' height = '20'> Nombre doctor </th>
       <th width = '300' height = '20'> Paterno </th>
       <th width = '300' height = '20'> Materno </th>
@@ -66,18 +71,15 @@ if (mysqli_num_rows($tablaBD)>0){
 			$nombre_pac = $registro['nombre_pac'];
 			$paterno_pac = $registro['paterno_pac'];
 			$materno_pac = $registro['materno_pac'];
-      $sexo_pac = $registro['sexo_pac'];
       $nombre_doc = $registro['nombre_doc'];
       $paterno_doc = $registro['paterno_doc'];
       $materno_doc = $registro['materno_doc'];
       $fecha_consulta = $registro['fecha_consulta'];
 			echo "<tr>";
-			echo "<script type = 'text/javascript'> document.getElementByld('hdnId').value = $id_paciente; </script>";
-			echo "<td><a href = 'updPacientes.php?id_paciente=$id_paciente'>" .$id_paciente. "</a></td>";
+			echo "<td><a href = 'updPacientes.php?id=$id_paciente'>" .$id_paciente. "</a></td>";
 			echo "<td>" .$nombre_pac. "</td>";
 			echo "<td>" .$paterno_pac. "</td>";
 			echo "<td>" .$materno_pac. "</td>";
-      echo "<td>" .$sexo_pac. "</td>";
       echo "<td>" .$nombre_doc. "</td>";
       echo "<td>" .$paterno_doc. "</td>";
       echo "<td>" .$materno_doc. "</td>";
@@ -94,7 +96,7 @@ else{
 				<td></td>
 			</tr>
 		<tr align = 'center'>
-		<td width = '1000' align = 'center'><font color = '#ff3333'> No existe registros en la tabla de Pacientes </font></td>
+		<td width = '1000' align = 'center'><font color = '#ff3333'>No existe registros en la tabla de Pacientes </font></td>
 		</tr>
 	</table> ";
 	echo " </body> ";
