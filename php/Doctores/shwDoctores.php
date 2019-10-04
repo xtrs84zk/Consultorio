@@ -65,7 +65,9 @@ if (mysqli_num_rows($tablaBD)>0){
 			$paterno = $registro['paterno'];
 			$materno = $registro['materno'];
 			echo "<tr>";
-			echo "<script type = 'text/javascript'> document.getElementByld('hdnld').value = $id_medico; </script>";
+			echo "<script type = 'text/javascript'>
+			document.getElementByld('hdnld').value = $id_medico; 
+			</script>";
 			echo "<td><a href = 'updDoctores.php?id_medico=$id_medico'>" .$id_medico. "</a></td>";
 			echo "<td>" .$id_colonia. "</td>";
 			echo "<td>" .$nombre. "</td>";

@@ -38,7 +38,7 @@ if(isset($_GET['id_medico'])){
 					}
 				</script>
 			</head>
-			<body onLoad='javascript: document.getElementById(\"txtIdDoc\").focus()'> 
+			<body onLoad='javascript: document.getElementById(\"txtIdDoc\").focus()'>
 			<form name='frmUpdDoctores' id='frmUpdDoctores' action='qryDoctores.php' method='POST'>
 				<table align='center' width='430' border='1'>
 					<tr height='100'>
@@ -127,12 +127,6 @@ if(isset($_GET['id_medico'])){
 					function enviar(opc)
 					{
 						switch (opc) {
-							case 'modificar':
-								document.getElementById('hdnOpc').value = 'modificar';
-								document.getElementById('hdnId').value = '$id_medico';
-								document.getElementById('frmUpdDoctores').submit();
-								break;
-
 							case 'eliminar':
 								document.getElementById('hdnOpc').value = 'eliminar';
 								document.getElementById('hdnId').value = '$id_medico';
@@ -159,31 +153,6 @@ if(isset($_GET['id_medico'])){
 						<tr>
 							<td>id_Medico</td>
 							<td>$id_medico</td>
-						</tr>
-						<tr>
-							<td>id_Colonia</td>
-							<td><input type='text' id='txtColo' name='txtColo' value='$id_colonia'>
-							</td>
-						</tr>
-						<tr>
-							<td>Nombre</td>
-							<td><input type='text' id='txtNombre' name='txtNombre' value='$nombre'>
-							</td>
-						</tr>
-            <tr>
-							<td>Paterno</td>
-							<td><input type='text' id='txtPat' name='txtPat' value='$paterno'>
-							</td>
-						</tr>
-            <tr>
-							<td>Materno</td>
-							<td><input type='text' id='txtMat' name='txtMat' value='$materno'>
-							</td>
-						</tr>
-						<tr>
-							<td colspan='2' align='center'>
-							<input type='button' id='btnGrabar' name='btnGrabar' value='Grabar' style='width:100px' onClick='enviar(\"modificar\")'>
-							</td>
 						</tr>
 						<tr>
 							<td colspan='2' align='center'>

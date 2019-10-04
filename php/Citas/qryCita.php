@@ -24,24 +24,18 @@ switch ($opcion)
     //construir el query para insertar en la tabla de la bd
 
 
-		$nombre = $_POST['txtNomPac'];
-		$paterno = $_POST['txtPatPac'];
-		$materno = $_POST['txtMatPac'];
-		$telefono = $_POST['txtTelPac'];
-    $id_medico = $_POST['txtIdmed'];
-		$id_pais = $_POST['txtIdPa'];
-		$id_estado = $_POST['txtIdEst'];
-		$id_ciudad = $_POST['txtIdc'];
-		$id_colonia = $_POST['txtPacCol'];
-    $sexo = $_POST['txtSex'];
+		$fechayhora = $_POST['txtFyH'];
+		$idmed = $_POST['txtIdMed'];
+		$idpac = $_POST['txtIdPac'];
 
 
-    $qry = "INSERT INTO pacientes(nombre, paterno, materno, telefono, id_medico, id_pais, id_estado, id_ciudad, id_colonia, sexo) VALUES ('$nombre', '$paterno', '$materno', '$telefono', '$id_medico', '$id_pais', '$id_estado', '$id_ciudad', '$id_colonia', '$sexo')";
+
+    $qry = "INSERT INTO citas(fechayhora, id_medico, id_paciente) VALUES ('$fechayhora', '$idmed', '$idpac')";
     //ejecutar el query
     $resultado = mysqli_query($conexionBD, $qry) or die ("Error al insertar el registro: " .mysqli_error($conexionBD));
     //redirigir el programa al script html de captura de datos
     echo "<script type='text/javascript'>
-		 window.location='updPacientes.php?id_paciente=noId'
+		 window.location='shwCitas.php';
 		 </script>";
     	break;
 
